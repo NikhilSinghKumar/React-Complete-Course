@@ -3,7 +3,6 @@ import FoodItems from "./componenets/FoodItems";
 
 function App() {
   let foodItems = ["Dal", "Roti", "Chawal", "Papad", "Sabji"];
-  // console.log(foodItems);
   return (
     <>
       <h1>Daily Healthy Food</h1>
