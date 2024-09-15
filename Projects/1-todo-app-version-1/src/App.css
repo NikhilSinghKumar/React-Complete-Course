@@ -1,0 +1,26 @@
+h1{
+  margin: 60px 100px;
+  padding: 30px;
+  background-color: rgb(133, 158, 226);
+}
+
+.todo-input{
+  padding: 0px 5px;
+}
+
+input{
+  width: 100%;
+}
+
+.items-container{
+  text-align: left;
+  padding: 15px;
+}
+
+.todo-row{
+  margin: 10px 5px;
+}
+
+.todo-btn{
+  min-width: 80px;
+}
