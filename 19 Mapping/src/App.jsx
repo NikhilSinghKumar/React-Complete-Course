@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;https://github.com/NikhilSinghKumar/React-Complete-Course
+export default App;
