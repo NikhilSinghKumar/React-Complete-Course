@@ -1,17 +1,13 @@
 import styles from "./Item.module.css";
 
-function Item({ foodList, handleByButton }) {
-  // function handleBuyButtonOnClick(event) {
-  //   console.log(event);
-  //   console.log(`${props.foodList} ordered`);
-  // }
-
+// eslint-disable-next-line react/prop-types
+function Item({ foodList, bought, handleBuyButton }) {
   return (
-    <li className={`${styles.hfdItems} list-group-item`}>
+    <li className={`${styles.hfdItems} list-group-item ${bought && "active"}`}>
       <span className={styles.hfdSpan}>{foodList}</span>
       <button
         className={`${styles.button} btn btn-success`}
-        onClick={handleByButton}
+        onClick={handleBuyButton}
       >
         Buy
       </button>

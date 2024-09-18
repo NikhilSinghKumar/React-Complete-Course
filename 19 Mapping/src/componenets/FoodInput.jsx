@@ -1,11 +1,12 @@
 import styles from "./FoodInput.module.css";
-function FoodInput({ handleOnChange }) {
+// eslint-disable-next-line react/prop-types
+function FoodInput({ handleOnKeyDown }) {
   return (
     <input
       className={styles.foodInput}
       type="text"
       placeholder="Search Food"
-      onChange={handleOnChange}
+      onKeyDown={handleOnKeyDown}
     />
   );
 }
