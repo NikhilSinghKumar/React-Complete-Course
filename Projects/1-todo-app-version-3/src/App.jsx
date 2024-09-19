@@ -9,8 +9,19 @@ function App() {
   let [todoList, setTodoList] = useState([]);
 
   function handleNewItem(itemName, itemDate) {
-    let newTodoItems = [...todoList, { name: itemName, dueDate: itemDate }];
-    setTodoList(newTodoItems);
+    // setTodoList((currentValue) => {
+    //   let newTodoItems = [
+    //     ...currentValue,
+    //     { name: itemName, dueDate: itemDate },
+    //   ];
+    //   return newTodoItems;
+    // });
+
+    // alternate
+    setTodoList((currentValue) => [
+      ...currentValue,
+      { name: itemName, dueDate: itemDate },
+    ]);
   }
 
   function handleDeleteItem(todoListItemName) {

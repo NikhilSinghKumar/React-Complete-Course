@@ -10,6 +10,9 @@ function AddTodo({ onNewItem }) {
     event.preventDefault();
     let todoItemName = todoNameElement.current.value;
     let todoDueDate = todoDueDateElement.current.value;
+    todoNameElement.current.value = "";
+    todoDueDateElement.current.value = "";
+
     onNewItem(todoItemName, todoDueDate);
   }
 
