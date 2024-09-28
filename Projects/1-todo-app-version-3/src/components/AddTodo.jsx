@@ -1,8 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { BiMessageAltAdd } from "react-icons/bi";
+import { TodoItemsContext } from "../store/todo-items-store";
 
 // eslint-disable-next-line react/prop-types
-function AddTodo({ onNewItem }) {
+function AddTodo() {
+  const { handleNewItem } = useContext(TodoItemsContext);
   let todoNameElement = useRef();
   let todoDueDateElement = useRef();
 
@@ -13,7 +15,7 @@ function AddTodo({ onNewItem }) {
     todoNameElement.current.value = "";
     todoDueDateElement.current.value = "";
 
-    onNewItem(todoItemName, todoDueDate);
+    handleNewItem(todoItemName, todoDueDate);
   }
 
   return (

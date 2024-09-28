@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import TodoItem from "./TodoItem";
 import styles from "./TodoItems.module.css";
 

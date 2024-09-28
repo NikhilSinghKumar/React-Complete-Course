@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 function TodoItem({ TodoName, TodoDate }) {
   return (
     <div className="container">
