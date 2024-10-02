@@ -25,7 +25,8 @@ function Post({ post }) {
           </span>
         ))}
         <div className="alert alert-success reactions" role="alert">
-          Likes: {post.reactions.likes} Dislikes: {post.reactions.dislikes}
+          Likes: {post.reactions.likes} Dislikes: {post.reactions.dislikes}{" "}
+          Views: {post.views}
         </div>
       </div>
     </div>
