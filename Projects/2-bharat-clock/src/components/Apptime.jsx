@@ -1,15 +1,21 @@
-let date = new Date();
-let currentTime = date.toLocaleTimeString();
-let dateToday = date.toLocaleDateString();
-
-setInterval(() => {
-  return currentTime;
-}, 1000);
+import { useEffect, useState } from "react";
 
 function AppTime() {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const intervalID = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, []);
+
   return (
     <div>
-      {dateToday} {currentTime}
+      {time.toLocaleDateString()} {time.toLocaleTimeString()}
     </div>
   );
 }
