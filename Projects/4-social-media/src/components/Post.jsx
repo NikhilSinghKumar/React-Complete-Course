@@ -2,6 +2,9 @@
 import { useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { PostList } from "../store/post-list-store";
+import { BiSolidLike } from "react-icons/bi";
+import { BiSolidDislike } from "react-icons/bi";
+import { IoEyeSharp } from "react-icons/io5";
 
 function Post({ post }) {
   const { deletePost } = useContext(PostList);
@@ -25,8 +28,8 @@ function Post({ post }) {
           </span>
         ))}
         <div className="alert alert-success reactions" role="alert">
-          Likes: {post.reactions.likes} Dislikes: {post.reactions.dislikes}{" "}
-          Views: {post.views}
+          <BiSolidLike /> {post.reactions.likes} <BiSolidDislike />{" "}
+          {post.reactions.dislikes} <IoEyeSharp /> {post.views}
         </div>
       </div>
     </div>
