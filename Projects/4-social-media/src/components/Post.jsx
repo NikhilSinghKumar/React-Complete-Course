@@ -28,8 +28,16 @@ function Post({ post }) {
           </span>
         ))}
         <div className="alert alert-success reactions" role="alert">
-          <BiSolidLike /> {post.reactions.likes} <BiSolidDislike />{" "}
-          {post.reactions.dislikes} <IoEyeSharp /> {post.views}
+          <span className="reactions-icons">
+            <BiSolidLike /> {post.reactions.likes}
+          </span>{" "}
+          <span className="reactions-icons">
+            <BiSolidDislike /> {post.reactions.dislikes}
+          </span>{" "}
+          <span className="reactions-icons">
+            <IoEyeSharp />
+            {post.views}
+          </span>
         </div>
       </div>
     </div>

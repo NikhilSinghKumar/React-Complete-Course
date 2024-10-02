@@ -10,15 +10,22 @@ function PostList() {
 
   useEffect(() => {
     setFetching(true);
-    console.log("fetch started");
-    fetch("https://dummyjson.com/posts/")
+    // Advanced useEffect
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch("https://dummyjson.com/posts/", { signal })
       .then((res) => res.json())
       .then((data) => {
         addInitialPosts(data.posts);
         setFetching(false);
-        console.log("fetchinggg");
       });
-    console.log("fetch ended");
+
+    // useEffect clean up
+    return () => {
+      console.log("Cleaning up useEffect");
+      controller.abort();
+    };
   }, []);
 
   return (

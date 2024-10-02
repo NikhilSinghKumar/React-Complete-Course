@@ -22,6 +22,10 @@
   margin: 15px 0 0 0;
 }
 
+.reactions-icons{
+  margin: 5px;
+}
+
 .create-post{
   width: 70%;
   margin: 50px 0 0 100px;
