@@ -8,7 +8,7 @@ import {
 } from "react";
 
 export const PostList = createContext({
-  PostList: [],
+  postList: [],
   fetching: false,
   addPost: () => {},
   deletePost: () => {},
