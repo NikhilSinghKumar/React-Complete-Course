@@ -17,31 +17,22 @@ function CreatePost() {
     const reactions = reactionsElement.current.value;
     const tags = tagsElement.current.value.split(" ");
 
-    userIdElement.current.value = "";
-    postTitleElement.current.value = "";
-    postBodyElement.current.value = "";
-    reactionsElement.current.value = "";
-    tagsElement.current.value = "";
+    // userIdElement.current.value = "";
+    // postTitleElement.current.value = "";
+    // postBodyElement.current.value = "";
+    // reactionsElement.current.value = "";
+    // tagsElement.current.value = "";
 
-    // adding a new post to api - hard coded
+    // adding a new post to api - from create post page
     fetch("https://dummyjson.com/posts/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        title: "My Name is Nikhil.",
-        body: "I a Programmer, YTber, Influencer, Teacher, Activist, Businessman",
-        reactions: 23,
-        tags: [
-          "name",
-          "nikhil",
-          "Programmer",
-          "YTber",
-          "Influencer",
-          "Teacher",
-          "Activist",
-          "Businessman",
-        ],
-        userId: 91,
+        title: postTitle,
+        body: postBody,
+        tags: tags,
+        reactions: reactions,
+        userId: userId,
       }),
     })
       .then((res) => res.json())
