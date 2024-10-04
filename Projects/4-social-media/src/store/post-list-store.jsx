@@ -1,15 +1,8 @@
 /* eslint-disable react/prop-types */
-import {
-  createContext,
-  useReducer,
-  useCallback,
-  useState,
-  useEffect,
-} from "react";
+import { createContext, useReducer, useCallback } from "react";
 
 export const PostList = createContext({
   postList: [],
-  fetching: false,
   addPost: () => {},
   deletePost: () => {},
 });
@@ -30,7 +23,6 @@ function postListReducer(currentPostList, action) {
 
 function PostListProvider({ children }) {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const [fetching, setFetching] = useState(false);
 
   function addPost(post) {
     dispatchPostList({
@@ -62,30 +54,10 @@ function PostListProvider({ children }) {
     [dispatchPostList]
   );
 
-  useEffect(() => {
-    setFetching(true);
-    // Advanced useEffect
-    const controller = new AbortController();
-    const signal = controller.signal;
-
-    fetch("https://dummyjson.com/posts/", { signal })
-      .then((res) => res.json())
-      .then((data) => {
-        addInitialPosts(data.posts);
-        setFetching(false);
-      });
-
-    // useEffect clean up
-    return () => {
-      controller.abort();
-    };
-  }, []);
-
   return (
     <PostList.Provider
       value={{
         postList: postList,
-        fetching: fetching,
         addPost: addPost,
         deletePost: deleteThePost,
       }}
