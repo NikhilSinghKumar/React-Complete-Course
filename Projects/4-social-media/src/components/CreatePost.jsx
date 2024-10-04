@@ -23,6 +23,30 @@ function CreatePost() {
     reactionsElement.current.value = "";
     tagsElement.current.value = "";
 
+    // adding a new post to api - hard coded
+    fetch("https://dummyjson.com/posts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title: "My Name is Nikhil.",
+        body: "I a Programmer, YTber, Influencer, Teacher, Activist, Businessman",
+        reactions: 23,
+        tags: [
+          "name",
+          "nikhil",
+          "Programmer",
+          "YTber",
+          "Influencer",
+          "Teacher",
+          "Activist",
+          "Businessman",
+        ],
+        userId: 91,
+      }),
+    })
+      .then((res) => res.json())
+      .then(console.log);
+
     addPost(userId, postTitle, postBody, reactions, tags);
   }
 

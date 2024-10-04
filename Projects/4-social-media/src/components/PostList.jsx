@@ -23,7 +23,6 @@ function PostList() {
 
     // useEffect clean up
     return () => {
-      console.log("Cleaning up useEffect");
       controller.abort();
     };
   }, []);
