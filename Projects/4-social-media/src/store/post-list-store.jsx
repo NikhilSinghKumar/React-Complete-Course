@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useCallback } from "react";
-import { createContext, useReducer } from "react";
+import {
+  createContext,
+  useReducer,
+  useCallback,
+  useState,
+  useEffect,
+} from "react";
 
 export const PostList = createContext({
   PostList: [],
+  fetching: false,
   addPost: () => {},
-  addInitialPosts: () => {},
   deletePost: () => {},
 });
 
@@ -25,18 +30,12 @@ function postListReducer(currentPostList, action) {
 
 function PostListProvider({ children }) {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
+  const [fetching, setFetching] = useState(false);
 
-  function addPost(userId, postTitle, postBody, reactions, tags) {
+  function addPost(post) {
     dispatchPostList({
       type: "ADD_POST",
-      payload: {
-        id: Date.now(),
-        title: postTitle,
-        body: postBody,
-        reactions: reactions,
-        userId: userId,
-        tags: tags,
-      },
+      payload: post,
     });
   }
 
@@ -63,12 +62,31 @@ function PostListProvider({ children }) {
     [dispatchPostList]
   );
 
+  useEffect(() => {
+    setFetching(true);
+    // Advanced useEffect
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    fetch("https://dummyjson.com/posts/", { signal })
+      .then((res) => res.json())
+      .then((data) => {
+        addInitialPosts(data.posts);
+        setFetching(false);
+      });
+
+    // useEffect clean up
+    return () => {
+      controller.abort();
+    };
+  }, []);
+
   return (
     <PostList.Provider
       value={{
         postList: postList,
+        fetching: fetching,
         addPost: addPost,
-        addInitialPosts: addInitialPosts,
         deletePost: deleteThePost,
       }}
     >
